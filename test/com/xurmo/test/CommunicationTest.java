@@ -29,5 +29,10 @@ public class CommunicationTest extends TestCase {
 	public void testThreadStart() {
 		testThread.start();
 	}
+	
+	@Test
+	public void testReadFromSocket() {
+		
+	}
 
 }

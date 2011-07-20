@@ -1,19 +1,30 @@
 package com.xurmo.ds;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Communication implements Runnable {
 	
-	private Socket mainSocket;
+	private Socket childSocket;
 
 	public Communication(Socket s) {
-		this.mainSocket = s;
+		this.childSocket = s;
 	}
 
 	@Override
 	public void run() {
-		for(int i=0; i< 10; i++){
-			System.out.println("Testing thread");
-		}
+		
+	}
+	
+	public String readFromSocket() throws IOException {
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(this.childSocket.getInputStream()));
+		String input = in.readLine();
+		System.out.println("test: " + input);
+		in.close();
+		return input;
 	}
 }
