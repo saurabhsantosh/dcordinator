@@ -27,4 +27,10 @@ public class Communication implements Runnable {
 		in.close();
 		return input;
 	}
+	
+	public void writeToSocket(String message) throws IOException {
+		PrintWriter out = new PrintWriter(this.childSocket.getOutputStream(), true);
+		out.println(message);
+		out.close();
+	}
 }
