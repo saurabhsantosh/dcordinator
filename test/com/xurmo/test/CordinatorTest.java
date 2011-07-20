@@ -11,7 +11,8 @@ public class CordinatorTest extends TestCase {
 	@Test
 	public void testInit()
 	{
-		new Cordinator();
+		Cordinator c=new Cordinator(10);
+		c.InitServer();
 	}
 
 }

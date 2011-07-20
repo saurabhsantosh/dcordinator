@@ -1,8 +1,9 @@
 package com.xurmo.ds;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 
-public class Cordinator implements Runnable{
+public class Cordinator {
 	
 	public static Integer portno;
 	
@@ -11,36 +12,46 @@ public class Cordinator implements Runnable{
 	
 	Thread[] communicationthread;
 	
-	public Cordinator()
+	public Cordinator(int number)
 	{
-		portno=12345;
+		portno=6000;
+		commobject = new Communication[number];
+		communicationthread=new Thread[number];
 	}
 	
 	public void InitServer()
 	{
-		int i=0;
+		Socket sock;
+		int count=1;
+		
 		
 		try
 		{   
-			
-			listenSocket=new ServerSocket(portno);
-			commobject[i]=new Communication();
+		    listenSocket=new ServerSocket(portno);
+			while(true)
+			{
+			sock=listenSocket.accept();
+			commobject[count]=new Communication(count,sock);
+			communicationthread[count]=new Thread(commobject[count]);
+			communicationthread[count].start();
+			count++;
+			}
 			
 		}
 		catch(Exception e)
 		{
-			//Showmessage("Connection Terminated");
-			return;
+			System.out.println(e.getMessage());
 		}
-	}
-
-	@Override
-	public void run() {
-		while(true)
-		{
-			
-		}
+	
 		
 	}
 
+public static void main(String[] args) {
+	
+	Cordinator cobj=new Cordinator(10);
+	cobj.InitServer();
+	
+}	
+	
+	
 }
