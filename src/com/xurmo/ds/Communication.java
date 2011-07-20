@@ -17,6 +17,15 @@ public class Communication implements Runnable {
 	@Override
 	public void run() {
 		
+		while(true) {
+			try {
+				String message = readFromSocket();
+				writeToSocket(message);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+		}
+		
 	}
 	
 	public String readFromSocket() throws IOException {
