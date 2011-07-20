@@ -1,5 +1,12 @@
 package com.xurmo.test;
 
-public class testclientTest {
+import org.junit.Test;
+import junit.framework.TestCase;
+
+public class testclientTest extends TestCase{
+	
+	@Test
+	
+	
 
 }
