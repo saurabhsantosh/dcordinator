@@ -31,12 +31,13 @@ public class Communication implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Thread started");
 		
 		while(true) {
 			try {
 				
-				System.out.println(in.readLine());
+				
+				System.out.println("dfsdf");
+				//System.out.println(in.readLine());
 				writeToSocket("Chakka");
 			} 
 			catch (IOException e) {
