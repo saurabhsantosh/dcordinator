@@ -1,6 +1,5 @@
 package com.xurmo.test;
 
-import java.net.ServerSocket;
 import java.net.Socket;
 
 import junit.framework.TestCase;
