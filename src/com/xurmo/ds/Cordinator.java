@@ -12,15 +12,17 @@ public class Cordinator {
 	
 	Thread[] communicationthread;
 	
-	public Cordinator()
+	public Cordinator(int number)
 	{
-		portno=12345;
+		portno=6000;
+		commobject = new Communication[number];
+		communicationthread=new Thread[number];
 	}
 	
-	private void InitServer()
+	public void InitServer()
 	{
 		Socket sock;
-		int count=0;
+		int count=1;
 		
 		
 		try
@@ -29,8 +31,7 @@ public class Cordinator {
 			while(true)
 			{
 			sock=listenSocket.accept();
-			System.out.println("Client : "+count+" Connected");
-			commobject[count]=new Communication(sock);
+			commobject[count]=new Communication(count,sock);
 			communicationthread[count]=new Thread(commobject[count]);
 			communicationthread[count].start();
 			count++;
@@ -47,7 +48,7 @@ public class Cordinator {
 
 public static void main(String[] args) {
 	
-	Cordinator cobj=new Cordinator();
+	Cordinator cobj=new Cordinator(10);
 	cobj.InitServer();
 	
 }	

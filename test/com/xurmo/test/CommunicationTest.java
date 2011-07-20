@@ -1,5 +1,6 @@
 package com.xurmo.test;
 
+import java.net.ServerSocket;
 import java.net.Socket;
 
 import junit.framework.TestCase;
@@ -16,7 +17,7 @@ public class CommunicationTest extends TestCase {
 	@Override
 	protected void setUp() throws Exception {
 		Socket s = new Socket();
-		c = new Communication(s);
+		c = new Communication(1,s);
 		this.testThread = new Thread(c);
 	}
 	
