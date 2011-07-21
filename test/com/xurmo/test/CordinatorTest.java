@@ -1,11 +1,7 @@
 package com.xurmo.test;
 
 
-import java.net.Socket;
-
 import org.junit.Test;
-
-import com.xurmo.ds.Communication;
 import com.xurmo.ds.Cordinator;
 import junit.framework.TestCase;
 
@@ -25,8 +21,6 @@ public class CordinatorTest extends TestCase {
 	public void testConnection()
 	{
 		c.InitServer();
-		TestClient t=new TestClient(6000, "127.0.0.1");
-		t.connect();
 	}
 
 }

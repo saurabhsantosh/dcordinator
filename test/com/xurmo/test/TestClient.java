@@ -22,6 +22,7 @@ public class TestClient {
 
 		this.ip = ip;
 		this.port = port;
+		System.out.println("Connecting...");
 
 	}
 
@@ -29,12 +30,24 @@ public class TestClient {
 		String message = "Hello";
 
 		try {
+			System.out.println("Connecting...");
 			clientSocket = new Socket(ip, port);
 			in = new BufferedReader(new InputStreamReader(
 					clientSocket.getInputStream()));
 			out = new DataOutputStream(this.clientSocket.getOutputStream());
+			while(true)
+			{
+				try
+				{
 			writeToSocket(message);
 			readFromSocket();
+				}
+				catch(Exception e)
+				{
+					break;
+				}
+			
+			}
 			in.close();
 			out.close();
 			clientSocket.close();
@@ -55,6 +68,12 @@ public class TestClient {
 		String message = in.readLine();
 		System.out.println("Server says : " + message);
 
+	}
+	
+	public static void main(String[] args) {
+		
+		TestClient  t=new TestClient(6000, "127.0.0.1");
+		t.connect();
 	}
 
 }

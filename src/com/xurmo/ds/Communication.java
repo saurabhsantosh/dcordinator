@@ -35,8 +35,8 @@ public class Communication implements Runnable {
 		while(true) {
 			try {
 				
-				System.out.println(in.readLine());
-				writeToSocket("Chakka");
+				System.out.println("Client Says : "+readFromSocket());
+				writeToSocket("Hey");
 			} 
 			catch (IOException e) {
 				e.printStackTrace();
@@ -60,13 +60,11 @@ public class Communication implements Runnable {
 	
 	public String readFromSocket() throws IOException {
 		String input = in.readLine();
-		System.out.println("test: " + input);
 		return input;
 	}
 	
 	public void writeToSocket(String message) throws IOException {
 		out.writeBytes(message+"\n");
-		System.out.println(message);
 	
 	}
 }
