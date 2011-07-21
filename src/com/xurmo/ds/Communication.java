@@ -35,9 +35,7 @@ public class Communication implements Runnable {
 		while(true) {
 			try {
 				
-				
-				System.out.println("dfsdf");
-				//System.out.println(in.readLine());
+				System.out.println(in.readLine());
 				writeToSocket("Chakka");
 			} 
 			catch (IOException e) {
@@ -67,7 +65,7 @@ public class Communication implements Runnable {
 	}
 	
 	public void writeToSocket(String message) throws IOException {
-		out.writeBytes(message);
+		out.writeBytes(message+"\n");
 		System.out.println(message);
 	
 	}

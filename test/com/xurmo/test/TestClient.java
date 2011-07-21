@@ -12,17 +12,33 @@ import java.net.Socket;
 public class TestClient {
 	
 	Socket clientSocket;
-	int portNumber;
+    String ip;
+    int port;
 	
-	public TestClient(int port) throws IOException {
-		InetAddress addr = InetAddress.getByName("127.0.0.1");
-		portNumber = port;
-		clientSocket = new Socket(addr, this.portNumber);
+	
+	public TestClient(int port,String ip){
+		
+		this.ip=ip;
+		this.port=port;
+		
+	}
+	
+	public void connect()
+	{
 		String message = "Hello";
 		
+		try
+		{
+		clientSocket = new Socket(ip, port);
 		writeToSocket(clientSocket, message);
 		readFromSocket(clientSocket);
 		clientSocket.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
 	}
 	
 	private void writeToSocket(Socket sock, String message) throws IOException {
@@ -38,4 +54,7 @@ public class TestClient {
 		System.out.println("Server says : " + message);
 		in.close();
 	}
+	
+	
+
 }
