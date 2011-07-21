@@ -22,8 +22,6 @@ public class TestClient {
 	}
 
 	public void connect() {
-		String message = "Hello";
-
 		try {
 
 			clientSocket = new Socket(ip, port);
