@@ -31,18 +31,10 @@ public class TestClient {
 			in = new BufferedReader(new InputStreamReader(
 					clientSocket.getInputStream()));
 			out = new DataOutputStream(this.clientSocket.getOutputStream());
-			while(true)
-			{
-				try
-				{
-			writeToSocket(message);
-			readFromSocket();
-				}
-				catch(Exception e)
-				{
-					break;
-				}
-			
+			try {
+				writeToSocket(message);
+				readFromSocket();
+			} catch (Exception e) {
 			}
 			in.close();
 			out.close();
@@ -62,13 +54,13 @@ public class TestClient {
 	private void readFromSocket() throws IOException {
 
 		String message = in.readLine();
-		System.out.println("Server says : " + message);
+		writeToSocket(message);
 
 	}
-	
+
 	public static void main(String[] args) {
-		
-		TestClient  t=new TestClient(6000, "127.0.0.1");
+
+		TestClient t = new TestClient(6000, "127.0.0.1");
 		t.connect();
 	}
 
