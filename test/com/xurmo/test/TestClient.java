@@ -33,8 +33,8 @@ public class TestClient {
 			in = new BufferedReader(new InputStreamReader(
 					clientSocket.getInputStream()));
 			out = new DataOutputStream(this.clientSocket.getOutputStream());
-			writeToSocket(clientSocket, message);
-			readFromSocket(clientSocket);
+			writeToSocket(message);
+			readFromSocket();
 			in.close();
 			out.close();
 			clientSocket.close();
@@ -44,13 +44,13 @@ public class TestClient {
 
 	}
 
-	private void writeToSocket(Socket sock, String message) throws IOException {
+	private void writeToSocket(String message) throws IOException {
 
 		out.writeBytes(message + "\n");
 
 	}
 
-	private void readFromSocket(Socket sock) throws IOException {
+	private void readFromSocket() throws IOException {
 
 		String message = in.readLine();
 		System.out.println("Server says : " + message);
