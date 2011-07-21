@@ -1,18 +1,18 @@
 package com.xurmo.test;
 
 import org.junit.Test;
-import com.xurmo.ds.Cordinator;
+import com.xurmo.ds.ServerNode;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class CordinatorTest extends TestCase {
 
-	Cordinator c;
+	ServerNode c;
 
 	@Override
 	protected void setUp() throws Exception {
-		c = new Cordinator(10);
+		c = new ServerNode(10);
 
 	}
 
