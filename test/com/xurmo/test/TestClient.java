@@ -18,7 +18,6 @@ public class TestClient {
 
 		this.ip = ip;
 		this.port = port;
-		System.out.println("Connecting...");
 
 	}
 
@@ -26,8 +25,9 @@ public class TestClient {
 		String message = "Hello";
 
 		try {
-			System.out.println("Connecting...");
+
 			clientSocket = new Socket(ip, port);
+			System.out.println("Connected...");
 			in = new BufferedReader(new InputStreamReader(
 					clientSocket.getInputStream()));
 			out = new DataOutputStream(this.clientSocket.getOutputStream());

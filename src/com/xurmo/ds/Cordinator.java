@@ -28,7 +28,7 @@ public class Cordinator {
 		try {
 			listenSocket = new ServerSocket(portno);
 			while (true) {
-				System.out.println("Waiting for Connection "+count);
+				System.out.println("Waiting for Connection " + count);
 				sock = listenSocket.accept();
 				commobject[count] = new Communication(count, sock);
 				communicationthread[count] = new Thread(commobject[count]);
@@ -38,28 +38,26 @@ public class Cordinator {
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			
+
 		}
 
 	}
-	
-	public String testchat()
-	{
+
+	public String testchat() {
 		Socket sock;
 		try {
 			listenSocket = new ServerSocket(portno);
 			sock = listenSocket.accept();
-			BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-			DataOutputStream out=new DataOutputStream(sock.getOutputStream());
-			out.writeBytes("OK"+"\n");
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					sock.getInputStream()));
+			DataOutputStream out = new DataOutputStream(sock.getOutputStream());
+			out.writeBytes("OK" + "\n");
 			return in.readLine();
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return "failed";
 		}
-		
+
 	}
 
 	public static void main(String[] args) {
