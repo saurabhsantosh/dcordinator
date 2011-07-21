@@ -32,7 +32,6 @@ public class TestClient {
 					clientSocket.getInputStream()));
 			out = new DataOutputStream(this.clientSocket.getOutputStream());
 			try {
-				writeToSocket(message);
 				readFromSocket();
 			} catch (Exception e) {
 			}
