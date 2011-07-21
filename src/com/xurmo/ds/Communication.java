@@ -51,10 +51,6 @@ public class Communication implements Runnable {
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		finally {
-			in = null;
-			out = null;
-		}
 		
 	}
 	
