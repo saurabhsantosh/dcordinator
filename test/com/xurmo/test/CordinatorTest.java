@@ -3,12 +3,15 @@ package com.xurmo.test;
 
 import org.junit.Test;
 import com.xurmo.ds.Cordinator;
+
+import junit.framework.Assert;
 import junit.framework.TestCase;
 
 
 public class CordinatorTest extends TestCase {
 	
 	Cordinator c;
+
 	
 	@Override
 	protected void setUp() throws Exception {
@@ -20,7 +23,7 @@ public class CordinatorTest extends TestCase {
 	
 	public void testConnection()
 	{
-		c.InitServer();
+		Assert.assertTrue(c.testchat()=="OK");
 	}
 
 }

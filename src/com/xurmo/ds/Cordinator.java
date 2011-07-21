@@ -1,5 +1,8 @@
 package com.xurmo.ds;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -35,8 +38,28 @@ public class Cordinator {
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			
 		}
 
+	}
+	
+	public String testchat()
+	{
+		Socket sock;
+		try {
+			listenSocket = new ServerSocket(portno);
+			sock = listenSocket.accept();
+			BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+			DataOutputStream out=new DataOutputStream(sock.getOutputStream());
+			out.writeBytes("OK"+"\n");
+			return in.readLine();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			return "failed";
+		}
+		
 	}
 
 	public static void main(String[] args) {
